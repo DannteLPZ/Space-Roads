@@ -118,7 +118,6 @@ public class UiCanvasGame : MonoBehaviour
         if (Score >=750){
             maxPoints.SetActive(true);
         }
-
         finalText.text = "Score: " + Score + " /1000";        
     }
 
@@ -173,14 +172,16 @@ public class UiCanvasGame : MonoBehaviour
         gamePaused = false;
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+        optionsMenu.SetActive(false);
     }
 
     public void MenuOptions()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         gamePaused = true;
         Time.timeScale = 0f;
+        pauseMenu.SetActive(false);
         optionsMenu.SetActive(true);
     }
 }
