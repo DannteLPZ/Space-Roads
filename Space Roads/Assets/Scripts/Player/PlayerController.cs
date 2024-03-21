@@ -14,7 +14,10 @@ public class PlayerController : MonoBehaviour
     public Vector2 offsetProjectile;
     private int live = 5;
     private bool gameOver;
-    
+    public float score = 0.0f;
+    private int multScore = 5;
+
+
     public bool powerUp; 
      
     // Start is called before the first frame update
@@ -38,8 +41,12 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         FirePlayer();
-
-        
+        //100 && score%9==0
+        if (score > multScore && score%multScore == 0)
+        {
+            powerUp = true;
+            StartCoroutine(PowerupCountdownRoutine(3));            
+        }
 
     }
 
@@ -81,14 +88,7 @@ public class PlayerController : MonoBehaviour
 
 
     private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //transform.Rotate(Vector2.left, 5 * Time.deltaTime);
-
-        var angles = transform.rotation.eulerAngles;
-        //angles.y = 0;
-        //transform.rotation = Quaternion.Euler(angles);
-        Debug.Log("Grados: " + angles.z);
-
+    {       
         if (live > 0)
         {
             live -= 1;
@@ -98,7 +98,18 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             Debug.Log("GAMEOVER");
             Debug.Log("Lives: " + live);
-        }      
+        }
 
+        if (collision.gameObject.CompareTag("PowerUp"))
+        {
+            Destroy(collision.gameObject);
+        }
+
+    }
+
+    IEnumerator PowerupCountdownRoutine(int timePowerUp)
+    {        
+        yield return new WaitForSeconds(timePowerUp);
+        powerUp = false;
     }
 }
