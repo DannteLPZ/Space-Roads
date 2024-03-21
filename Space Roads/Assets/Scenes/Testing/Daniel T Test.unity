@@ -2577,6 +2577,7 @@ GameObject:
   - component: {fileID: 1145737853}
   - component: {fileID: 1145737852}
   - component: {fileID: 1145737851}
+  - component: {fileID: 1145737855}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2671,6 +2672,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1145737855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145737850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eecb74d3a3c6a249ba871ef4eb0c218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  danielTItchIoButton: {fileID: 1036401518}
+  danielLItchIoButton: {fileID: 1588251202}
+  emmanuelItchIoButton: {fileID: 934108611}
+  johanItchIoButton: {fileID: 296257238}
+  sofiaItchIoButton: {fileID: 1124335999}
 --- !u!1 &1156185201
 GameObject:
   m_ObjectHideFlags: 0
