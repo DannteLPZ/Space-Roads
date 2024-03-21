@@ -11,6 +11,10 @@ public class UiCanvasGame : MonoBehaviour
     [SerializeField] GameObject gameOverMenu;
     public static bool gameOver = false;
 
+    //active options menu
+
+    [SerializeField] GameObject optionsMenu;
+
     //pause _Menu
     [SerializeField] Button pauseButton;
 
@@ -19,7 +23,7 @@ public class UiCanvasGame : MonoBehaviour
     public static bool gamePaused = false;
 
     //slide vida
-    public Slider slider;
+    public Slider sliderLife;
 
     //aqui cuando tengamos el player
     //public Player player;
@@ -35,21 +39,36 @@ public class UiCanvasGame : MonoBehaviour
     //valores para pruebas
     public int Score =0;
 
+
+    //win
+    [SerializeField] GameObject winMissionMenu;
+    [SerializeField] GameObject winMenu;
+
+    public bool winMission = false;
+    public bool finalWin = false;
+
+    [SerializeField] GameObject maxPoints;
+    [SerializeField] GameObject midPoints;
+    [SerializeField] GameObject minPoints;
+
+    public TextMeshProUGUI finalText;
+
+
+
+
     private void Start() {
         //aqui cuando tengamos el player
-        //slider.maxValue = player.maxLife;
+        //sliderLife.maxValue = player.maxLife;
 
         //valores para pruebas
-        slider.maxValue = maxLife;
+        sliderLife.maxValue = maxLife;
 
         UpdateSliderValue();
     }
 
 
-
     private void Update()
     {
-
         UpdateScoreText();
         UpdateSliderValue();
 
@@ -64,19 +83,56 @@ public class UiCanvasGame : MonoBehaviour
                 Pause();
             }
         }
+
+        if ( winMission == true){
+            WinMissionMenu();
+        }
+
+        if (finalWin == true){
+            WinMenu();
+        }
+    }
+
+
+    public void WinMissionMenu(){
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        gamePaused = true;
+        Time.timeScale = 0f;
+        winMissionMenu.SetActive(true);
+    }
+
+    public void WinMenu(){
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        gamePaused = true;
+        Time.timeScale = 0f;
+        winMenu.SetActive(true);
+
+        if (Score <250){
+            minPoints.SetActive(true);
+        }
+        if (Score >=250 && Score <750){
+            midPoints.SetActive(true);
+        }
+        if (Score >=750){
+            maxPoints.SetActive(true);
+        }
+
+        finalText.text = "Score: " + Score + " /1000";        
     }
 
     private void UpdateSliderValue()
     {
         //aqui cuando tengamos el player
-        //slider.value = player.currentLife;
+        //sliderLife.value = player.currentLife;
 
 
         //valores para pruebas
-        slider.value = currentLife;
+        sliderLife.value = currentLife;
 
         if(currentLife>0){
-            slider.value = currentLife;
+            sliderLife.value = currentLife;
         }
         else{
             GameOver();
@@ -91,7 +147,7 @@ public class UiCanvasGame : MonoBehaviour
         Time.timeScale = 0f;
         gameOverMenu.SetActive(true);
     }
-    
+
     public void UpdateScoreText()
     {
         //aqui cuando tengamos el GameManager
@@ -117,5 +173,14 @@ public class UiCanvasGame : MonoBehaviour
         gamePaused = false;
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+    }
+
+    public void MenuOptions()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        gamePaused = true;
+        Time.timeScale = 0f;
+        optionsMenu.SetActive(true);
     }
 }
