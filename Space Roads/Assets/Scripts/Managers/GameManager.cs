@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    private int _currentLevel;
+    public int CurrentLevel => _currentLevel;
 
     private void Awake()
     {
@@ -16,4 +18,11 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
+
+    private void Start()
+    {
+        _currentLevel = 0;
+    }
+
+    public void IncreaseLevel() => _currentLevel++;
 }
