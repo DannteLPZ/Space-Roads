@@ -10,11 +10,11 @@ public class UiItchMenu : MonoBehaviour
     [SerializeField] Button emmanuelItchIoButton;
     [SerializeField] Button johanItchIoButton;
     [SerializeField] Button sofiaItchIoButton;
-    private string danielTItchIoURL = "https://itch.io/";
-    private string danielLItchIoURL = "https://itch.io/";
-    private string emmanuelItchIoURL = "https://itch.io/";
-    private string johanItchIoURL = "https://itch.io/";
-    private string sofiaItchIoURL = "https://itch.io/";
+    private string danielTItchIoURL = "https://danieltolo1.itch.io/";
+    private string danielLItchIoURL = "https://dannte9804.itch.io/";
+    private string emmanuelItchIoURL = "https://emadrigalv.itch.io/";
+    private string johanItchIoURL = "https://johan-fonseca-sanchez.itch.io/";
+    private string sofiaItchIoURL = "https://sofi-cu.itch.io/";
 
     private void Start()
     {
