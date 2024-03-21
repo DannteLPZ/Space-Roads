@@ -1,29 +1,28 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI.Table;
 
-public class EnemySwarmSpawner : MonoBehaviour
+public class EnemySwarmBehaviour : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private List<GameObject> enemyList = new List<GameObject>();
 
+    [SerializeField] private int difficultyIndex; //Auxiliar variable for testing
     [SerializeField] private int rows;
     [SerializeField] private int columns;
     [SerializeField] private float tileSize;
     [SerializeField] private float limitMovementY;
+    [SerializeField] private float speedMultiplier;
     [SerializeField] private Vector2 swarmSpeed;
 
     private Vector2 spawnPoint;
     private Vector2 limitPoint;
 
-    private float speedMultiplier;
+    
 
     private void Start()
     {
         speedMultiplier = 0.0f;
-        GenerateSwarm();
-        Invoke(nameof(InitializeMovement), 2.0f);
+        GenerateSwarm(difficultyIndex);
     }
 
     private void Update()
@@ -42,11 +41,11 @@ public class EnemySwarmSpawner : MonoBehaviour
             transform.position = new Vector2((limitPoint.x - tileSize * (columns - 0.5f)), transform.position.y);
         }
 
-        if (transform.position.y <= (tileSize * rows - 0.5f))
+        if (transform.position.y <= (tileSize * (rows - 0.5f)))
         {
             if (swarmSpeed.y < 0) swarmSpeed.y *= -1.0f;
 
-            transform.position = new Vector2(transform.position.x, (tileSize * rows - 0.5f));
+            transform.position = new Vector2(transform.position.x, (tileSize * (rows - 0.5f)));
         }
 
         else if(transform.position.y >= (limitPoint.y - tileSize / 2.0f))
@@ -56,13 +55,11 @@ public class EnemySwarmSpawner : MonoBehaviour
             transform.position = new Vector2(transform.position.x, (limitPoint.y - tileSize / 2.0f));
         }
 
-        transform.Translate(swarmSpeed * speedMultiplier * Time.deltaTime);
+        transform.Translate((swarmSpeed * speedMultiplier) * Time.deltaTime);
 
     }
 
-    private void InitializeMovement() => speedMultiplier = 1.0f;
-
-    private void GenerateSwarm()
+    private void GenerateSwarm(int levelDifficulty)
     {
         if(columns % 2 == 0) columns--;
 
@@ -73,11 +70,11 @@ public class EnemySwarmSpawner : MonoBehaviour
 
                 if((row % 2 == 0 && col % 2 == 0) || (row % 2 != 0 && col % 2 != 0))
                 {
-                    //numero aleatorio 
-                    GameObject enemy = Instantiate(enemyPrefab, transform);
+                    int randomEnemyType = UnityEngine.Random.Range(0, levelDifficulty);
+                    GameObject enemy = Instantiate(enemyList[randomEnemyType], transform);
 
                     float posX = col * tileSize;
-                    float posY = row * -tileSize;
+                    float posY = row * - tileSize;
 
                     enemy.transform.localPosition = new Vector2(posX, posY);
                 }
@@ -94,6 +91,32 @@ public class EnemySwarmSpawner : MonoBehaviour
 
         transform.position = spawnPoint;
 
+        InitializeMovement(levelDifficulty);
     }
 
+    private void SetSwarmSpeed(int levelDifficulty)
+    {
+        switch(levelDifficulty)
+        {
+            case 1:
+                speedMultiplier = 1.0f; break;
+
+            case 2:
+                speedMultiplier = 1.5f; break;
+
+            case 3:
+                speedMultiplier = 2.0f; break;
+        }
+    }
+
+    private void InitializeMovement(int levelDifficulty)
+    {
+        StartCoroutine(StartMovementRoutine(levelDifficulty));
+    }
+
+    private IEnumerator StartMovementRoutine(int levelDifficulty)
+    {
+        yield return new WaitForSeconds(1.5f);
+        SetSwarmSpeed(levelDifficulty);
+    }
 }
