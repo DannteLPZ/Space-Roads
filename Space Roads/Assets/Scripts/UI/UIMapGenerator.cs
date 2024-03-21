@@ -20,6 +20,9 @@ public class UIMapGenerator : MonoBehaviour
     [SerializeField] private GameObject _iconCanvas;
     [SerializeField] private GameObject _lineCanvas;
 
+    [Header("Player Icon")]
+    [SerializeField] private UIMapPlayerIcon _mapPlayerIcon;
+
     private RectTransform _mapRect;
     private float _mapWidth;
     private float _mapHeight;
@@ -62,11 +65,13 @@ public class UIMapGenerator : MonoBehaviour
         //Define starting node which is always the same
         #region Initial Node
         float deltaX = (Screen.width - _mapWidth)/ 2.0f;
-        float posX = ((_mapWidth - GetRectTransform(_startingIcon).sizeDelta.x) / 2.0f) + deltaX; 
-        float posY = _margins.y + (realHeight / (_levels * 2.0f));
+        RectTransform startRect = GetRectTransform(_startingIcon);
+        float posX = ((_mapWidth/ 2.0f) + deltaX); 
+        float posY = _margins.y + (realHeight / (_levels * 2.0f)) + (startRect.sizeDelta.y / 2.0f);
 
         //Create Initial Node
         GameObject initialNode = CreateNode(_startingIcon, new(posX, posY), null);
+        _mapPlayerIcon.SetIconPosition((Vector2)initialNode.transform.position);
         initialNode.GetComponent<UIMapIcon>().ToggleBehaviour(true);
         _allMapIcons[0].Add(initialNode.GetComponent<UIMapIcon>());
         SelectedIcon = initialNode;
@@ -112,7 +117,7 @@ public class UIMapGenerator : MonoBehaviour
 
         //Define final node which is always the same
         #region Final Node
-        posX = ((_mapWidth - GetRectTransform(_finalIcon).sizeDelta.x) / 2.0f) + deltaX;
+        posX = (_mapWidth / 2.0f) + deltaX;
         posY = realHeight - _margins.y;
         GameObject finalNode = CreateNode(_finalIcon, new(posX,posY), null);
         UIMapIcon finalIcon = finalNode.GetComponent<UIMapIcon>();
@@ -144,7 +149,7 @@ public class UIMapGenerator : MonoBehaviour
         RectTransform rectTransform = GetRectTransform(node);
         rectTransform.anchorMax = Vector2.zero;
         rectTransform.anchorMin = Vector2.zero;
-        rectTransform.pivot = Vector2.zero;
+        rectTransform.pivot = 0.5f * Vector2.one;
         rectTransform.anchoredPosition = position;
         return node;
     }
@@ -158,9 +163,9 @@ public class UIMapGenerator : MonoBehaviour
         LineRenderer lineRenderer = lineObject.GetComponent<LineRenderer>();
 
         //Position according to vectors given
-        Vector2 lineOffset = GetRectTransform(currentIcon).sizeDelta / 2.0f;
-        lineRenderer.SetPosition(0, initialPoint + lineOffset);
-        lineRenderer.SetPosition(1, finalPoint + lineOffset);
+        //Vector2 lineOffset = GetRectTransform(currentIcon).sizeDelta / 2.0f;
+        lineRenderer.SetPosition(0, initialPoint);
+        lineRenderer.SetPosition(1, finalPoint);
         lineRenderer.enabled = true;
 
         return uIMapLine;
@@ -212,4 +217,10 @@ public class UIMapGenerator : MonoBehaviour
         _mapHeight = _mapRect.rect.height;
     }
     #endregion
+
+    public void SelectNewIcon(GameObject icon)
+    {
+        SelectedIcon = icon;
+        _mapPlayerIcon.TravelToPoint((Vector2)SelectedIcon.transform.position);
+    }
 }

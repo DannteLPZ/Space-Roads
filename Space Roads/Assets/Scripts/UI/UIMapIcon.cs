@@ -30,7 +30,8 @@ public class UIMapIcon : MonoBehaviour
 
     public void SelectIcon()
     {
-        Generator.SelectedIcon = gameObject;
+        Generator.SelectNewIcon(gameObject);
+
         GameManager.Instance.IncreaseLevel();
         Generator.ActivatePaths(GameManager.Instance.CurrentLevel);
     }
