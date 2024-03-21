@@ -97,5 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1c66af382a8c949a23f42e10623b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLaserPrefab: {fileID: 4995218551362744006, guid: b2cedc2e9dcea2f42bc19e672d2797df, type: 3}
+  enemyType: {fileID: 11400000, guid: 987716829f882dc44bb855fba3b1b72d, type: 2}
   enemyLive: 10

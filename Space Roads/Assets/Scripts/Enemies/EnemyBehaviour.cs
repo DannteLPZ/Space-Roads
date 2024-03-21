@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyLaserPrefab;
+    [SerializeField] private EnemyType enemyType;
 
     [SerializeField] private int enemyLive;
 
@@ -15,13 +15,13 @@ public class EnemyBehaviour : MonoBehaviour
 
     private IEnumerator EnemyAttack()
     {
-        int randomAttackTime = Random.Range(2,7);
+        int randomAttackTime = Random.Range(enemyType.minFireRate,enemyType.maxFireRate);
         
         yield return new WaitForSeconds(randomAttackTime);
 
         //Iniciar sonido de ataque.
 
-        Instantiate(enemyLaserPrefab, transform.position, Quaternion.identity);
+        Instantiate(enemyType.laserPrefab, transform.position, Quaternion.identity);
 
         StartCoroutine(EnemyAttack());
     }

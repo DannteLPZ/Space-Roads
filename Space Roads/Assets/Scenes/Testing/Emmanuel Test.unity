@@ -290,7 +290,8 @@ MonoBehaviour:
   enemyList:
   - {fileID: 392189497738448581, guid: 1d880bf5ae35578438f8985d1a9f1df8, type: 3}
   - {fileID: 190953015137453901, guid: ecdb171f428ff7541979b802d55f2918, type: 3}
-  difficultyIndex: 2
+  - {fileID: 3813607994587465596, guid: 60047e00e9c7a3f4db4b17c91693b8e6, type: 3}
+  difficultyIndex: 3
   rows: 3
   columns: 8
   tileSize: 1.3
