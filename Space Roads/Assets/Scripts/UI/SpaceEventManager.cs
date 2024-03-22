@@ -32,7 +32,7 @@ public class SpaceEventManager : MonoBehaviour
         {
             int damageValue = int.Parse(selectedEvent.Arguments);
             if(damageValue<0){
-                playerHealth.TakeDamage(damageValue);
+                playerHealth.TakeDamage(Mathf.Abs(damageValue));
             }
             else if(damageValue>0){
                 playerHealth.RestoreHealth(damageValue);
