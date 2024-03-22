@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74838c3486f1f7744b14b93faf1463a5, type: 3}
-  m_Name: Increment Projectiles
+  m_Name: Increment Shoot Speed
   m_EditorClassIdentifier: 
-  EventImage: {fileID: 21300000, guid: e43e777931dabd0469b472d9b6968544, type: 3}
-  Method: ModNumProjectiles
-  Arguments: 1
+  EventImage: {fileID: 21300000, guid: 022a1eb64f9946d4fb32ca522a1970e9, type: 3}
+  Method: ModShootSpeed
+  Arguments: 20

@@ -47,5 +47,10 @@ MonoBehaviour:
   listSpaceEvent:
   - {fileID: 11400000, guid: 88bd69ee2480992438fc9ed1b50e1679, type: 2}
   - {fileID: 11400000, guid: 484ef9dd257ba2944a444555a787a957, type: 2}
+  - {fileID: 11400000, guid: ec39c31ebd16aa848a4983992e7e2c0d, type: 2}
+  - {fileID: 11400000, guid: 51f6b2f2a8b7f3947be2294361ce964d, type: 2}
+  - {fileID: 11400000, guid: e2b3a6842773ee143bec364707b08670, type: 2}
+  - {fileID: 11400000, guid: caed85f7eef79a746878f0527c5e1faf, type: 2}
+  - {fileID: 11400000, guid: 3d88dd02424013847a7d55da6848f4eb, type: 2}
   eventImage: {fileID: 0}
   onEventSelected: {fileID: 11400000, guid: 039cdee85ae775f4cb98e214473736ae, type: 2}

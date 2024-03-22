@@ -56,20 +56,14 @@ public class SpaceEventManager : MonoBehaviour
         GameManager.Instance.AddScore(int.Parse(selectedEvent.Arguments));
     }
 
-    /*public void DecreaseShootSpeed (string shootSpeed){
-        
-    }*/
+    public void ModShootSpeed (string shootSpeed){   
+    }
 
-    
+    public void ModShields (string shield){    
+    }
 
-    /*public void IncreaseShields (string shield){
-        
-    }*/
-
-    /*public void IncreaseDamage (string damage){
-        
-
-    }*/
+    public void ModDamage (string damage){
+    }
 
     [ContextMenu("Select Random Event")]
     public void SelectEvent(){
