@@ -23,11 +23,7 @@ public class EnemySwarmBehaviour : MonoBehaviour
     [HideInInspector]
     public int enemyCount;
 
-    private void Start()
-    {
-        speedMultiplier = 0.0f;
-        GenerateSwarm();
-    }
+    private void Start() => speedMultiplier = 0.0f;
 
     private void Update()
     {
@@ -63,9 +59,9 @@ public class EnemySwarmBehaviour : MonoBehaviour
 
     }
 
-    private void GenerateSwarm()
+    public void GenerateSwarm()
     {
-        int levelDifficulty = GameManager.Instance.CurrentLevel;
+        int levelDifficulty = GameManager.Instance.CurrentLevel + 1;
 
         enemyCount = 0;
 
@@ -110,6 +106,7 @@ public class EnemySwarmBehaviour : MonoBehaviour
 
         if(enemyCount <= 0)
         {
+            speedMultiplier = 0.0f;
             _onMissionComplete.Invoke();
         }
     }

@@ -1,11 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 screenSize;
     private Vector2 limitPoint;
 
+    private Vector2 initialPos;
+
     private void Start()
     {
         screenSize = new(Screen.width, Screen.height);
@@ -29,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
         boundX = limitPoint.x;
         boundsY = new Vector2(limitY, -limitPoint.y);
+
+        initialPos = transform.position;
     }
 
     void Update()
@@ -39,8 +36,8 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        horizotalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        horizotalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
 
         Vector2 direction = new Vector2(horizotalInput, verticalInput).normalized;
 

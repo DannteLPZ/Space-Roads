@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 566664c3289be6349b0e10cab204985c, type: 3}
-  m_Name: Enemy3
+  m_Script: {fileID: 11500000, guid: 28847b3347351bf4a99f0b77b9ef57d5, type: 3}
+  m_Name: Mission Continue
   m_EditorClassIdentifier: 
-  laserPrefab: {fileID: 3150512340024269686, guid: 8de8bc793673680428e6c9972f6a7e7d, type: 3}
-  minFireRate: 3
-  maxFireRate: 6
+  Listeners: []

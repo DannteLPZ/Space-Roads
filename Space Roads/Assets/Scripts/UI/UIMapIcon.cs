@@ -3,8 +3,12 @@ using UnityEngine.UI;
 
 public class UIMapIcon : MonoBehaviour
 {
+    [Header("Visualization")]
     [SerializeField] private Color _activatedColor;
     [SerializeField] private Color _deactivatedColor;
+
+    [Header("Event")]
+    [SerializeField] private GameEvent _iconEvent;
 
     private Image _image;
     private Button _button;
@@ -26,11 +30,7 @@ public class UIMapIcon : MonoBehaviour
         _button.enabled = active;
     }
 
-    public void SelectIcon()
-    {
-        Generator.SelectNewIcon(gameObject);
+    public void SelectIcon() => Generator.SelectNewIcon(gameObject);
 
-        GameManager.Instance.IncreaseLevel();
-        Generator.ActivatePaths(GameManager.Instance.CurrentLevel);
-    }
+    public void InvokeEvent() => _iconEvent.Invoke();
 }

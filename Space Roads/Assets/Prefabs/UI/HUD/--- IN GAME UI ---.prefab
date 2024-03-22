@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 6359319592774430448}
   - component: {fileID: 1125291747362406538}
   m_Layer: 5
-  m_Name: ButtonContunue
+  m_Name: ButtonContinue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,6 +416,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 3305216075368897877}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2014615560}
+        m_TargetAssemblyTypeName: GameManagerHelper, Assembly-CSharp
+        m_MethodName: IncreaseLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3857,7 +3869,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -3919,15 +3931,13 @@ MonoBehaviour:
   gameOverMenu: {fileID: 1991419226}
   winMissionMenu: {fileID: 1991419225}
   winMenu: {fileID: 1991419224}
+  scoreText: {fileID: 7819363971678300717}
+  finalText: {fileID: 7819363970661329710}
+  sliderLife: {fileID: 7819363970629593623}
   maxPoints: {fileID: 7819363970764099890}
   midPoints: {fileID: 7819363969984796935}
   minPoints: {fileID: 7819363970011840879}
-  sliderLife: {fileID: 7819363970629593623}
-  scoreText: {fileID: 7819363971678300717}
-  finalText: {fileID: 7819363970661329710}
-  Score: 0
-  winMission: 0
-  finalWin: 0
+  _onMissionContinue: {fileID: 11400000, guid: 06e3e10d2639a294da78bd345ab98b72, type: 2}
 --- !u!114 &2014615559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3965,7 +3975,7 @@ GameObject:
   - component: {fileID: 7819363971058451745}
   - component: {fileID: 7819363971058451746}
   m_Layer: 5
-  m_Name: ButtonContunue
+  m_Name: ButtonContinue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4092,6 +4102,30 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1991419225}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7819363971051703870}
+        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
+        m_MethodName: MissionContinue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2014615560}
+        m_TargetAssemblyTypeName: GameManagerHelper, Assembly-CSharp
+        m_MethodName: IncreaseLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

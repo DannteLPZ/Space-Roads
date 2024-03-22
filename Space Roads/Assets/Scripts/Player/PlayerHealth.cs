@@ -15,18 +15,14 @@ public class PlayerHealth : MonoBehaviour, IHealth
 
     public int CurrentHealth => _currentHealth;
 
-    void Start()
+    private void Awake()
     {
         _currentHealth = _maxHealth;
     }
 
     public void Die()
     {
-
-        //Efectos y sonidos de muerte
-
         _onDead.Invoke();
-
         Debug.Log("A mimir");
         //Destroy(gameObject);
     }
@@ -34,10 +30,7 @@ public class PlayerHealth : MonoBehaviour, IHealth
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
-
         _onHealthChange.Invoke();
-
-        //Efectos y sonido de daño
 
         if (_currentHealth <= 0) Die();
     }
@@ -45,9 +38,7 @@ public class PlayerHealth : MonoBehaviour, IHealth
     public void RestoreHealth(int heal)
     {
         _currentHealth += heal;
-
         _onHealthChange.Invoke();
-
         if (_currentHealth > _maxHealth) _currentHealth = _maxHealth;
     }
 }

@@ -12,33 +12,28 @@ public class UiCanvasGame : MonoBehaviour
     [SerializeField] private CanvasGroup winMissionMenu;
     [SerializeField] private CanvasGroup winMenu;
 
+    [Header("Score Texts")]
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text finalText;
+
+    [Header("Life Slider")]
+    [SerializeField] private Slider sliderLife;
+
     [Header("Point Images")]
     [SerializeField] private Image maxPoints;
     [SerializeField] private Image midPoints;
     [SerializeField] private Image minPoints;
 
-    public static bool gamePaused = false;
+    [Header("Events")]
+    [SerializeField] private GameEvent _onMissionContinue;
 
-    public static bool gameOver = false;
-
-    //slide vida
-    public Slider sliderLife;
-
-    //score text
-    public TMP_Text scoreText;
-    public TMP_Text finalText;
-
-    //valores para pruebas
-    public int Score = 0;
-
-    public bool winMission = false;
-    public bool finalWin = false;
+    private bool gamePaused = false;
 
     private GameObject player;
 
 
-    private void Start() {
-        
+    private void Start() 
+    { 
         player = GameObject.FindGameObjectWithTag("Player");
         UIUpdateHealth();
     }
@@ -46,26 +41,12 @@ public class UiCanvasGame : MonoBehaviour
 
     private void Update()
     {
-        UIUpdateHealth();
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gamePaused)
-            {
                 Resume();
-            }
             else
-            {
                 Pause();
-            }
-        }
-
-        if ( winMission == true){
-            WinMissionMenu();
-        }
-
-        if (finalWin == true){
-            WinMenu();
         }
     }
 
@@ -73,44 +54,36 @@ public class UiCanvasGame : MonoBehaviour
     public void WinMissionMenu(){
 
         gamePaused = true;
-        Time.timeScale = 0f;
+        Time.timeScale = 0.0f;
         ShowCanvasGroup(winMissionMenu);
-
-        //Llamar mapa al continuar
     }
 
     public void WinMenu(){
         
         gamePaused = true;
         Time.timeScale = 0f;
-        
-        if (Score <250){
+        int finalScore = GameManager.Instance.Score;
+        if (finalScore < 250)
             minPoints.enabled = true;
-        }
-        if (Score >=250 && Score <750){
+        if (finalScore >= 250 && finalScore < 750)
             midPoints.enabled = true;
-        }
-        if (Score >=750){
+        if (finalScore >= 750)
             maxPoints.enabled = true;
-        }
 
         ShowCanvasGroup(winMenu);
     }
 
     public void UIUpdateHealth()
     {
-        //aqui cuando tengamos el player
         if(player!=null){
             player.TryGetComponent(out IHealth playerHealth);
-
             if (playerHealth != null)
                 sliderLife.value = (float)playerHealth.CurrentHealth / playerHealth.MaxHealth;
         }
     }
 
-    public void GameOver(){
-        
-        gameOver=true;
+    public void GameOver()
+    {
         Time.timeScale = 0f;
         ShowCanvasGroup(gameOverMenu);
     }
@@ -118,7 +91,7 @@ public class UiCanvasGame : MonoBehaviour
     public void UpdateScoreText()
     {
         scoreText.text = "Score: " + GameManager.Instance.Score;
-        finalText.text = "Score: " + Score + " /1000";
+        finalText.text = "Score: " + GameManager.Instance.Score + " /1000";
     }
 
     public void Pause()
@@ -149,5 +122,7 @@ public class UiCanvasGame : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;
     }
+
+    public void MissionContinue() => _onMissionContinue.Invoke();
 
 }

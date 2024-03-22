@@ -8,12 +8,17 @@ public class SpaceEventManager : MonoBehaviour
     [SerializeField] List<SpaceEvent> listSpaceEvent= new();
     [SerializeField] Image eventImage;
     [SerializeField] GameEvent onEventSelected;
+    
     private SpaceEvent selectedEvent;
+    private GameObject player;
 
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     public void ModNumProjectiles(){
-        PlayerFire playerFire = FindObjectOfType<PlayerFire>();
-        if (playerFire != null)
+        if (player.TryGetComponent<PlayerFire>(out var playerFire))
         {
             int currentNumProjectiles = playerFire.ProjectileCount;
             int numProjectilesValue = int.Parse(selectedEvent.Arguments);
@@ -23,8 +28,7 @@ public class SpaceEventManager : MonoBehaviour
 
     public void ModHealth(){
 
-        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
-        if (playerHealth!= null)
+        if (player.TryGetComponent<PlayerHealth>(out var playerHealth))
         {
             int damageValue = int.Parse(selectedEvent.Arguments);
             if(damageValue<0){
@@ -37,8 +41,7 @@ public class SpaceEventManager : MonoBehaviour
     }
 
     public void ModSpeed (){
-        PlayerController playerController = FindObjectOfType<PlayerController>();
-        if (playerController != null)
+        if (player.TryGetComponent<PlayerController>(out var playerController))
         {
             float speedValue = float.Parse(selectedEvent.Arguments);
             float percentage = speedValue/100;
@@ -53,7 +56,8 @@ public class SpaceEventManager : MonoBehaviour
     }
 
     public void ModScore (){
-        GameManager.Instance.AddScore(int.Parse(selectedEvent.Arguments));
+        if(GameManager.Instance != null)
+            GameManager.Instance.AddScore(int.Parse(selectedEvent.Arguments));
     }
 
     public void ModShootSpeed (string shootSpeed){   

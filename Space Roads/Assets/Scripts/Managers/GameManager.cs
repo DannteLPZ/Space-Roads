@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header("Eventos")]
-    [SerializeField] private GameEvent _updateScoreEvent;
-
+    [SerializeField] private GameEvent _onScoreUpdated;
+    [SerializeField] private GameEvent _onLevelIncreased;
 
     public static GameManager Instance;
 
@@ -33,19 +33,21 @@ public class GameManager : MonoBehaviour
         _currentLevel = 0;
     }
 
-    public void IncreaseLevel() => _currentLevel++;
+    public void IncreaseLevel()
+    {
+        _currentLevel++;
+        _onLevelIncreased.Invoke();
+    }
 
     public void LoadGameScene(int buildIndex)
     {
         _currentLevel = 0;
         SceneManager.LoadScene(buildIndex);
-
     }
 
     public void AddScore(int score)
     {
         _score += score;
-
-        _updateScoreEvent.Invoke();
+        _onScoreUpdated.Invoke();
     }
 }

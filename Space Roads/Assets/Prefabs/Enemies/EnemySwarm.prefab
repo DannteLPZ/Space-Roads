@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5447454907652957206}
   - component: {fileID: 5447454907652957207}
   - component: {fileID: 5410275143138375738}
+  - component: {fileID: 1945310355}
   m_Layer: 0
   m_Name: EnemySwarm
   m_TagString: Untagged
@@ -96,8 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyList:
   - {fileID: 392189497738448581, guid: 1d880bf5ae35578438f8985d1a9f1df8, type: 3}
-  - {fileID: 190953015137453901, guid: ecdb171f428ff7541979b802d55f2918, type: 3}
-  - {fileID: 3813607994587465596, guid: 60047e00e9c7a3f4db4b17c91693b8e6, type: 3}
+  - {fileID: 752327220934846021, guid: 7e2cd715657fad94687029309f26e634, type: 3}
+  - {fileID: 1165022634296931600, guid: a46e48b7f08d74f47bd9718bc10b2ac6, type: 3}
   difficultyIndex: 1
   rows: 3
   columns: 8
@@ -134,4 +135,32 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1945310355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5447454907652957201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 1275fbe4387999b498cfe6879702d91b, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5447454907652957207}
+        m_TargetAssemblyTypeName: EnemySwarmBehaviour, Assembly-CSharp
+        m_MethodName: GenerateSwarm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
