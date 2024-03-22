@@ -17,14 +17,13 @@ public class UIMapPlayerIcon : MonoBehaviour
     private IEnumerator Travel(Vector2 point)
     {
         Vector2 direction = (point - (Vector2)_playerIcon.transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Debug.Log(angle);
-        //_playerIcon.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, angle);
-
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90.0f;
+        _playerIcon.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, angle);
         while (Vector2.Distance(_playerIcon.transform.position, point) >= 0.01)
         {
-            _playerIcon.transform.Translate(_iconSpeed * Time.deltaTime * direction);
+            _playerIcon.transform.Translate(_iconSpeed * Time.deltaTime * Vector2.up);
             yield return null;
         }
+        _playerIcon.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0);
     }
 }
