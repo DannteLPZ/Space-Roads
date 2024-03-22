@@ -432,7 +432,7 @@ MonoBehaviour:
   _levelIcons:
   - {fileID: 4103202038251548863, guid: 25c187445d8e70849846c2158cc38e82, type: 3}
   - {fileID: 4925934445192310109, guid: 6312d8c8d7ec12e498117fec36f1b07d, type: 3}
-  - {fileID: 1235952119194360261, guid: 241136a3c1f6a524688515f45c7a023c, type: 3}
+  - {fileID: 4925934445192310109, guid: 6312d8c8d7ec12e498117fec36f1b07d, type: 3}
   _finalIcon: {fileID: 7531599133503218854, guid: ed11c273dc7469546b1fa28ca5fa2037, type: 3}
   _margins: {x: 20, y: 50}
   _lineObject: {fileID: 9008601862306146450, guid: 01ba4bdcd4a0fab459a3a2db43afb4de, type: 3}

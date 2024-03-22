@@ -42,7 +42,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        //Play("M_Theme");
+        Play("M_MainMenu");
     }
 
     /// <summary>

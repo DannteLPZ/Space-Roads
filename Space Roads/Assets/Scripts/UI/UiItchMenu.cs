@@ -5,7 +5,13 @@ using UnityEngine.UI;
 
 public class UiItchMenu : MonoBehaviour
 {
-    [SerializeField] Button danielTItchIoButton;
+    public void OpenUrl(string url)
+    {
+        Application.OpenURL(url);
+    }
+
+
+  /*  [SerializeField] Button danielTItchIoButton;
     [SerializeField] Button danielLItchIoButton;
     [SerializeField] Button emmanuelItchIoButton;
     [SerializeField] Button johanItchIoButton;
@@ -15,7 +21,7 @@ public class UiItchMenu : MonoBehaviour
     private string emmanuelItchIoURL = "https://emadrigalv.itch.io/";
     private string johanItchIoURL = "https://johan-fonseca-sanchez.itch.io/";
     private string sofiaItchIoURL = "https://sofi-cu.itch.io/";
-
+  
     private void Start()
     {
         danielTItchIoButton.onClick.AddListener(OpenItchioDanielT);
@@ -48,5 +54,5 @@ public class UiItchMenu : MonoBehaviour
     private void OpenItchioSofia()
     {
         Application.OpenURL(sofiaItchIoURL);
-    }
+    }*/
 }
