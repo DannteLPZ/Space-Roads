@@ -118,7 +118,7 @@ public class UIMapGenerator : MonoBehaviour
         //Define final node which is always the same
         #region Final Node
         posX = (_mapWidth / 2.0f) + deltaX;
-        posY = realHeight - _margins.y;
+        posY = realHeight - _margins.y + (GetRectTransform(_finalIcon).sizeDelta.y / 2.0f);
         GameObject finalNode = CreateNode(_finalIcon, new(posX,posY), null);
         UIMapIcon finalIcon = finalNode.GetComponent<UIMapIcon>();
         _allMapIcons[_levels - 1].Add(finalIcon);
@@ -181,6 +181,7 @@ public class UIMapGenerator : MonoBehaviour
             _allMapIcons.Last()[0].ParentIcon = SelectedIcon;
             _allMapLines[level + 1].First(p => p.ParentIcon == SelectedIcon).ParentIcon = _allMapIcons.Last()[0].gameObject;
         }
+        else if (level == _levels - 1) return;
 
         //Deactivate non-selected icons
         UIMapIcon[] iconsToDeactivate = _allMapIcons[level].Where(p => p.gameObject != SelectedIcon).ToArray();
