@@ -5,111 +5,59 @@ using System.Text.RegularExpressions;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
-    private float inputVertical;
-    private float horizotalVertical;
-    public GameObject projectilePrefab;
-    public Vector2 offsetProjectile;
-    private int live = 5;
-    private bool gameOver;
-    public float score = 0.0f;
-    private int multScore = 5;
+    [Header("Movimiento")]
+    [SerializeField] private float speed;
+    [SerializeField] private float limitY;
+    [SerializeField] private float offsetBoundX;
 
+    private float verticalInput;
+    private float horizotalInput;
+    private float boundX;
 
-    public bool powerUp; 
-     
-    // Start is called before the first frame update
-    void Start()
+    private Vector2 boundsY;
+    private Vector2 screenSize;
+    private Vector2 limitPoint;
+
+    private void Start()
     {
-        //capsule = GameObject.Find("Capsule");
+        screenSize = new(Screen.width, Screen.height);
+        limitPoint = Camera.main.ScreenToWorldPoint(screenSize);
 
-        //velocifda = FindObjectsOfType<MoveUp>().ge
-        //capsule = FindObjectsOfType<MoveUp>()
-        //GameObject.Find("Capsule").GetComponent<MoveUp>().speed = 500;
-
-        //oo = FindObjectsOfType<MoveUp>();
-        
-
-
-
-}
-
-    // Update is called once per frame
-    void Update()
-    {
-        MovePlayer();
-        FirePlayer();
-        //100 && score%9==0
-        if (score > multScore && score%multScore == 0)
-        {
-            powerUp = true;
-            StartCoroutine(PowerupCountdownRoutine(3));            
-        }
-
+        boundX = limitPoint.x;
+        boundsY = new Vector2(limitY, -limitPoint.y);
     }
 
-    void FirePlayer()
+    void Update()
     {
-        offsetProjectile = new Vector2(0, 2);
-        if (Input.GetMouseButtonDown(0) && !powerUp)
-        {
-            
-            Vector2 originProjectile= new Vector2(transform.position.x, transform.position.y) + offsetProjectile;
-            projectilePrefab.GetComponent<MoveUp>().speed = 5.0f;
-            Instantiate(projectilePrefab, originProjectile, projectilePrefab.transform.rotation);
-
-        }
-        else if (Input.GetMouseButtonDown(0) && powerUp)
-        {
-            Vector2 originProjectile = new Vector2(transform.position.x, transform.position.y) + offsetProjectile;
-            projectilePrefab.GetComponent<MoveUp>().speed = 10.0f;
-            Instantiate(projectilePrefab, originProjectile, Quaternion.Euler(0, 0, -45));
-            Instantiate(projectilePrefab, originProjectile, Quaternion.Euler(0, 0, 45));
-        }
-        else if (Input.GetKeyDown(KeyCode.Space) && powerUp)
-        {
-            Vector2 originProjectile = new Vector2(transform.position.x, transform.position.y) + offsetProjectile;
-            projectilePrefab.GetComponent<MoveUp>().speed = 15.0f;
-            Instantiate(projectilePrefab, originProjectile, projectilePrefab.transform.rotation);
-            Instantiate(projectilePrefab, originProjectile, Quaternion.Euler(0, 0, -15));
-            Instantiate(projectilePrefab, originProjectile, Quaternion.Euler(0, 0, 15));
-        }
+        Boundary();
+        MovePlayer();
     }
 
     void MovePlayer()
     {
-        horizotalVertical = Input.GetAxis("Horizontal");
-        inputVertical = Input.GetAxis("Vertical");
-        transform.Translate(Vector2.up * 5 * inputVertical * Time.deltaTime);
-        transform.Translate(Vector2.right * 5 * horizotalVertical * Time.deltaTime);
+        horizotalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+
+        Vector2 direction = new Vector2(horizotalInput, verticalInput).normalized;
+
+        transform.Translate(speed * Time.deltaTime * direction);
     }
 
+    private void Boundary()
+    {
+        //Limit position in Y axis
+        if(transform.position.y > boundsY.x)
+            transform.position = new Vector2(transform.position.x, boundsY.x);
+        
+        if(transform.position.y < boundsY.y)
+            transform.position = new Vector2(transform.position.x, boundsY.y);
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {       
-        if (live > 0)
-        {
-            live -= 1;
-            Debug.Log("Lives: " + live);
-        }else if(live == 0)
-        {
-            gameOver = true;
-            Debug.Log("GAMEOVER");
-            Debug.Log("Lives: " + live);
-        }
 
-        if (collision.gameObject.CompareTag("PowerUp"))
-        {
-            Destroy(collision.gameObject);
-        }
-
-    }
-
-    IEnumerator PowerupCountdownRoutine(int timePowerUp)
-    {        
-        yield return new WaitForSeconds(timePowerUp);
-        powerUp = false;
+        if(transform.position.x > boundX + offsetBoundX || transform.position.x < - boundX - offsetBoundX)
+            transform.position = new Vector2( - Mathf.Sign(transform.position.x)  * boundX, transform.position.y);
     }
 }

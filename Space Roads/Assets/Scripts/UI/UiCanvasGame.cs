@@ -24,10 +24,6 @@ public class UiCanvasGame : MonoBehaviour
     //slide vida
     public Slider sliderLife;
 
-    //valores para pruebas
-    public int currentLife=10;
-    public int maxLife =10;
-
     //score text
     public TMP_Text scoreText;
     public TMP_Text finalText;
@@ -38,21 +34,20 @@ public class UiCanvasGame : MonoBehaviour
     public bool winMission = false;
     public bool finalWin = false;
 
+    private GameObject player;
+
 
     private void Start() {
-        //aqui cuando tengamos el player
-        //sliderLife.maxValue = player.maxLife;
 
-        //valores para pruebas
-        sliderLife.maxValue = maxLife;
+        player = GameObject.FindGameObjectWithTag("Player");
 
-        UpdateSliderValue();
+        UIUpdateHealth();
     }
 
 
     private void Update()
     {
-        UpdateSliderValue();
+        UIUpdateHealth();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -103,21 +98,13 @@ public class UiCanvasGame : MonoBehaviour
         ShowCanvasGroup(winMenu);
     }
 
-    private void UpdateSliderValue()
+    public void UIUpdateHealth()
     {
         //aqui cuando tengamos el player
-        //sliderLife.value = player.currentLife;
+        player.TryGetComponent(out IHealth playerHealth);
 
-
-        //valores para pruebas
-        sliderLife.value = currentLife;
-
-        if(currentLife > 0){
-            sliderLife.value = currentLife;
-        }
-        else{
-            GameOver();
-        }
+        if (playerHealth != null)
+            sliderLife.value = (float)playerHealth.CurrentHealth / playerHealth.MaxHealth;
     }
 
     public void GameOver(){
@@ -129,11 +116,7 @@ public class UiCanvasGame : MonoBehaviour
 
     public void UpdateScoreText()
     {
-        //aqui cuando tengamos el GameManager
-        //scoreText.text = "Score: " + GameManager.instance.score; // Suponiendo que GameManager.instance.score es el puntaje del jugador
-
-        //valores para pruebas
-        scoreText.text = "Score: " + Score + " /1000";
+        scoreText.text = "Score: " + GameManager.Instance.Score;
         finalText.text = "Score: " + Score + " /1000";
     }
 

@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 566664c3289be6349b0e10cab204985c, type: 3}
-  m_Name: Enemy1
+  m_Script: {fileID: 11500000, guid: 28847b3347351bf4a99f0b77b9ef57d5, type: 3}
+  m_Name: Player Dead
   m_EditorClassIdentifier: 
-  laserPrefab: {fileID: 4995218551362744006, guid: b2cedc2e9dcea2f42bc19e672d2797df, type: 3}
-  minFireRate: 5
-  maxFireRate: 10
+  Listeners: []

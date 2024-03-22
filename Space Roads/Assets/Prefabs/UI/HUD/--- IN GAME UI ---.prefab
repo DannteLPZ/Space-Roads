@@ -1769,6 +1769,7 @@ GameObject:
   - component: {fileID: 7819363970058835007}
   - component: {fileID: 2014615557}
   - component: {fileID: 2014615558}
+  - component: {fileID: 5151624464542782044}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -1868,6 +1869,34 @@ MonoBehaviour:
       - m_Target: {fileID: 7819363971051703870}
         m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
         m_MethodName: UpdateScoreText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5151624464542782044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819363970058834977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 266c51d19c4ce1544a8ae6c3277d203f, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7819363971051703870}
+        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
+        m_MethodName: UIUpdateHealth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2182,9 +2211,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10
-  m_WholeNumbers: 1
-  m_Value: 10
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3552,8 +3581,6 @@ MonoBehaviour:
   midPoints: {fileID: 7819363969984796935}
   minPoints: {fileID: 7819363970011840879}
   sliderLife: {fileID: 7819363970629593623}
-  currentLife: 10
-  maxLife: 10
   scoreText: {fileID: 7819363971678300717}
   finalText: {fileID: 7819363970661329710}
   Score: 0

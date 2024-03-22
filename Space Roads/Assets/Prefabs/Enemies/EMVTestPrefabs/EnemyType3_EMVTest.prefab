@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3575292960157664948}
   m_Layer: 0
   m_Name: EnemyType3_EMVTest
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,4 +98,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: {fileID: 11400000, guid: add04661c4fc66848b66334f873a827c, type: 2}
-  enemyLive: 30
