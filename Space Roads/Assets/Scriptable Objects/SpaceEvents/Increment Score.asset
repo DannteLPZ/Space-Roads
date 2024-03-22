@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74838c3486f1f7744b14b93faf1463a5, type: 3}
   m_Name: Increment Score
   m_EditorClassIdentifier: 
-  EventImage: {fileID: 21300000, guid: e4a2ed1e46d7be14c97a214444a0ff94, type: 3}
+  EventImage: {fileID: 21300000, guid: ec69602ec06e43f4bbdd848213d29b5e, type: 3}
   Method: ModScore
   Arguments: 200
