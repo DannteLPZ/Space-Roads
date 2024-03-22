@@ -1,59 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class UiCanvasGame : MonoBehaviour
 {
-    //game over 
-    [SerializeField] GameObject gameOverMenu;
-    public static bool gameOver = false;
 
-    //active options menu
+    [Header("Menu")]
+    [SerializeField] private CanvasGroup pauseMenu;
+    [SerializeField] private CanvasGroup optionsMenu;
+    [SerializeField] private CanvasGroup gameOverMenu;
+    [SerializeField] private CanvasGroup winMissionMenu;
+    [SerializeField] private CanvasGroup winMenu;
 
-    [SerializeField] GameObject optionsMenu;
-
-    //pause _Menu
-    [SerializeField] Button pauseButton;
-
-    [SerializeField] GameObject pauseMenu;
+    [Header("Point Images")]
+    [SerializeField] private Image maxPoints;
+    [SerializeField] private Image midPoints;
+    [SerializeField] private Image minPoints;
 
     public static bool gamePaused = false;
 
+    public static bool gameOver = false;
+
     //slide vida
     public Slider sliderLife;
-
-    //aqui cuando tengamos el player
-    //public Player player;
-
 
     //valores para pruebas
     public int currentLife=10;
     public int maxLife =10;
 
     //score text
-    public TextMeshProUGUI scoreText;
+    public TMP_Text scoreText;
+    public TMP_Text finalText;
 
     //valores para pruebas
-    public int Score =0;
-
-
-    //win
-    [SerializeField] GameObject winMissionMenu;
-    [SerializeField] GameObject winMenu;
+    public int Score = 0;
 
     public bool winMission = false;
     public bool finalWin = false;
-
-    [SerializeField] GameObject maxPoints;
-    [SerializeField] GameObject midPoints;
-    [SerializeField] GameObject minPoints;
-
-    public TextMeshProUGUI finalText;
-
-
 
 
     private void Start() {
@@ -69,7 +52,6 @@ public class UiCanvasGame : MonoBehaviour
 
     private void Update()
     {
-        UpdateScoreText();
         UpdateSliderValue();
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -95,30 +77,30 @@ public class UiCanvasGame : MonoBehaviour
 
 
     public void WinMissionMenu(){
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+
         gamePaused = true;
         Time.timeScale = 0f;
-        winMissionMenu.SetActive(true);
+        ShowCanvasGroup(winMissionMenu);
+
+        //Llamar mapa al continuar
     }
 
     public void WinMenu(){
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        
         gamePaused = true;
         Time.timeScale = 0f;
-        winMenu.SetActive(true);
-
+        
         if (Score <250){
-            minPoints.SetActive(true);
+            minPoints.enabled = true;
         }
         if (Score >=250 && Score <750){
-            midPoints.SetActive(true);
+            midPoints.enabled = true;
         }
         if (Score >=750){
-            maxPoints.SetActive(true);
+            maxPoints.enabled = true;
         }
-        finalText.text = "Score: " + Score + " /1000";        
+
+        ShowCanvasGroup(winMenu);
     }
 
     private void UpdateSliderValue()
@@ -130,7 +112,7 @@ public class UiCanvasGame : MonoBehaviour
         //valores para pruebas
         sliderLife.value = currentLife;
 
-        if(currentLife>0){
+        if(currentLife > 0){
             sliderLife.value = currentLife;
         }
         else{
@@ -140,11 +122,9 @@ public class UiCanvasGame : MonoBehaviour
 
     public void GameOver(){
         
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         gameOver=true;
         Time.timeScale = 0f;
-        gameOverMenu.SetActive(true);
+        ShowCanvasGroup(gameOverMenu);
     }
 
     public void UpdateScoreText()
@@ -154,34 +134,36 @@ public class UiCanvasGame : MonoBehaviour
 
         //valores para pruebas
         scoreText.text = "Score: " + Score + " /1000";
+        finalText.text = "Score: " + Score + " /1000";
     }
 
     public void Pause()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
         gamePaused = true;
         Time.timeScale = 0f;
-        pauseMenu.SetActive(true);
+        ShowCanvasGroup(pauseMenu);
     }
 
     public void Resume()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        HideCanvasGroup(pauseMenu);
+        HideCanvasGroup(optionsMenu);
         gamePaused = false;
         Time.timeScale = 1f;
-        pauseMenu.SetActive(false);
-        optionsMenu.SetActive(false);
     }
 
-    public void MenuOptions()
+    public void ShowCanvasGroup(CanvasGroup canvasGroup)
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        gamePaused = true;
-        Time.timeScale = 0f;
-        pauseMenu.SetActive(false);
-        optionsMenu.SetActive(true);
+        canvasGroup.alpha = 1.0f;
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;
     }
+
+    public void HideCanvasGroup(CanvasGroup canvasGroup)
+    {
+        canvasGroup.alpha = 0.0f;
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = false;
+    }
+
 }
