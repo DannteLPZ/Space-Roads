@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IHealth
 {
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _score;
+
+    [Header("Game Events")]
+    [SerializeField] private GameEvent _onEnemyDestroyed;
 
     private int _currentHealth;
 
@@ -20,7 +21,11 @@ public class EnemyHealth : MonoBehaviour, IHealth
 
     public void Die()
     {
-        GameManager.Instance.AddScore(_score);
+        if(GameManager.Instance != null)
+            GameManager.Instance.AddScore(_score);
+
+        _onEnemyDestroyed.Invoke();
+        //Efectos y sonidos de muerte
 
         Destroy(gameObject);
     }
@@ -28,6 +33,8 @@ public class EnemyHealth : MonoBehaviour, IHealth
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
+
+        //Efectos y sonido de daño
 
         if (_currentHealth <= 0 ) Die();
     }

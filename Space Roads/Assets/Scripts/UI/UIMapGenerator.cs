@@ -16,6 +16,7 @@ public class UIMapGenerator : MonoBehaviour
     [SerializeField] private GameObject _lineObject;
 
     [Header("Canvas Sorting")]
+    [SerializeField] private Canvas _mapCanvas;
     [SerializeField] private GameObject _mapObject;
     [SerializeField] private GameObject _iconCanvas;
     [SerializeField] private GameObject _lineCanvas;
@@ -26,6 +27,7 @@ public class UIMapGenerator : MonoBehaviour
     private RectTransform _mapRect;
     private float _mapWidth;
     private float _mapHeight;
+    private float _mapScale;
 
     private List<GameObject> _currentLevelIcons = new();
     private List<GameObject> _nextLevelIcons = new();
@@ -43,7 +45,7 @@ public class UIMapGenerator : MonoBehaviour
 
     private void Start()
     {
-        ActivatePaths(0);
+        ActivatePaths();
     }
     #region Map Generation
     private void GenerateMap()
@@ -55,18 +57,18 @@ public class UIMapGenerator : MonoBehaviour
         {
             _allMapIcons.Add(new List<UIMapIcon>());
             _allMapLines.Add(new List<UIMapLine>());
-        }  
+        }
 
         //Get available dimensions
         float realWidth = _mapWidth - (_margins.x * 2.0f);
-        float realHeight = _mapHeight - (_margins.x * 2.0f);
+        float realHeight =_mapHeight - (_margins.x * 2.0f);
         #endregion
 
         //Define starting node which is always the same
         #region Initial Node
-        float deltaX = (Screen.width - _mapWidth)/ 2.0f;
+        float deltaX = (Screen.width - _mapWidth)/ (2.0f * _mapScale);
         RectTransform startRect = GetRectTransform(_startingIcon);
-        float posX = ((_mapWidth/ 2.0f) + deltaX); 
+        float posX = Screen.width / (2.0f * _mapScale); 
         float posY = _margins.y + (realHeight / (_levels * 2.0f)) + (startRect.sizeDelta.y / 2.0f);
 
         //Create Initial Node
@@ -90,8 +92,8 @@ public class UIMapGenerator : MonoBehaviour
             {
                 GameObject currentNode = _currentLevelIcons[i];
                 RectTransform currentRect = GetRectTransform(currentNode); //Reference current rect for positioning
-                int randomNodeIndex = Random.Range(1, _maxBranches + 1); //Max 3 branches per node
-                float offset = realWidth / (_currentLevelIcons.Count * randomNodeIndex);
+                int randomNodeIndex = Random.Range(1, _maxBranches + 1); //Max 2 branches per node
+                float offset = (realWidth / (_currentLevelIcons.Count * randomNodeIndex)) * 0.9f;
 
                 //Create branches on current node
                 for (int j = 0; j < randomNodeIndex; j++)
@@ -117,7 +119,7 @@ public class UIMapGenerator : MonoBehaviour
 
         //Define final node which is always the same
         #region Final Node
-        posX = (_mapWidth / 2.0f) + deltaX;
+        posX = (_mapWidth / (2.0f * _mapScale)) + deltaX;
         posY = realHeight - _margins.y + (GetRectTransform(_finalIcon).sizeDelta.y / 2.0f);
         GameObject finalNode = CreateNode(_finalIcon, new(posX,posY), null);
         UIMapIcon finalIcon = finalNode.GetComponent<UIMapIcon>();
@@ -173,8 +175,9 @@ public class UIMapGenerator : MonoBehaviour
     #endregion
     
     #region Path activation
-    public void ActivatePaths(int level)
+    public void ActivatePaths()
     {
+        int level = GameManager.Instance.CurrentLevel;
         //If the selected level is the one before the last assign parents to activate corresponding icon and line
         if (level == _levels - 2)
         {
@@ -216,6 +219,7 @@ public class UIMapGenerator : MonoBehaviour
         _mapRect = GetRectTransform(_mapObject);
         _mapWidth = _mapRect.rect.width;
         _mapHeight = _mapRect.rect.height;
+        _mapScale =_mapCanvas.scaleFactor;
     }
     #endregion
 
@@ -224,4 +228,6 @@ public class UIMapGenerator : MonoBehaviour
         SelectedIcon = icon;
         _mapPlayerIcon.TravelToPoint((Vector2)SelectedIcon.transform.position);
     }
+
+    public void ResolveNewIcon() => SelectedIcon.GetComponent<UIMapIcon>().InvokeEvent();
 }

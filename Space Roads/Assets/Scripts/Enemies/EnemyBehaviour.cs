@@ -18,7 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         //Iniciar sonido de ataque.
 
-        Instantiate(enemyType.laserPrefab, transform.position, Quaternion.identity);
+        Instantiate(enemyType.laserPrefab, transform.position, transform.rotation);
 
         StartCoroutine(EnemyAttack());
     }

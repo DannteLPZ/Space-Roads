@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _activatedColor: {r: 1, g: 1, b: 1, a: 1}
   _deactivatedColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.78431374}
-  _animator: {fileID: 0}
+  _iconEvent: {fileID: 11400000, guid: 1275fbe4387999b498cfe6879702d91b, type: 2}
   ParentIcon: {fileID: 0}
   Generator: {fileID: 0}
 --- !u!95 &192789346

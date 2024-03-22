@@ -14,16 +14,16 @@ public class EnemySwarmBehaviour : MonoBehaviour
     [SerializeField] private float speedMultiplier;
     [SerializeField] private Vector2 swarmSpeed;
 
+    [Header("Game Events")]
+    [SerializeField] private GameEvent _onMissionComplete;
+
     private Vector2 spawnPoint;
     private Vector2 limitPoint;
 
-    
+    [HideInInspector]
+    public int enemyCount;
 
-    private void Start()
-    {
-        speedMultiplier = 0.0f;
-        GenerateSwarm(difficultyIndex);
-    }
+    private void Start() => speedMultiplier = 0.0f;
 
     private void Update()
     {
@@ -59,8 +59,12 @@ public class EnemySwarmBehaviour : MonoBehaviour
 
     }
 
-    private void GenerateSwarm(int levelDifficulty)
+    public void GenerateSwarm()
     {
+        int levelDifficulty = GameManager.Instance.CurrentLevel + 1;
+
+        enemyCount = 0;
+
         if(columns % 2 == 0) columns--;
 
         for (int row = 0; row < rows; row++) 
@@ -72,6 +76,8 @@ public class EnemySwarmBehaviour : MonoBehaviour
                 {
                     int randomEnemyType = UnityEngine.Random.Range(0, levelDifficulty);
                     GameObject enemy = Instantiate(enemyList[randomEnemyType], transform);
+
+                    enemyCount++;
 
                     float posX = col * tileSize;
                     float posY = row * - tileSize;
@@ -92,6 +98,17 @@ public class EnemySwarmBehaviour : MonoBehaviour
         transform.position = spawnPoint;
 
         InitializeMovement(levelDifficulty);
+    }
+
+    public void ReduceEnemyCount()
+    {
+        enemyCount--;
+
+        if(enemyCount <= 0)
+        {
+            speedMultiplier = 0.0f;
+            _onMissionComplete.Invoke();
+        }
     }
 
     private void SetSwarmSpeed(int levelDifficulty)
