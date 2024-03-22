@@ -38,9 +38,8 @@ public class UiCanvasGame : MonoBehaviour
 
 
     private void Start() {
-
+        
         player = GameObject.FindGameObjectWithTag("Player");
-
         UIUpdateHealth();
     }
 
@@ -101,10 +100,12 @@ public class UiCanvasGame : MonoBehaviour
     public void UIUpdateHealth()
     {
         //aqui cuando tengamos el player
-        player.TryGetComponent(out IHealth playerHealth);
+        if(player!=null){
+            player.TryGetComponent(out IHealth playerHealth);
 
-        if (playerHealth != null)
-            sliderLife.value = (float)playerHealth.CurrentHealth / playerHealth.MaxHealth;
+            if (playerHealth != null)
+                sliderLife.value = (float)playerHealth.CurrentHealth / playerHealth.MaxHealth;
+        }
     }
 
     public void GameOver(){

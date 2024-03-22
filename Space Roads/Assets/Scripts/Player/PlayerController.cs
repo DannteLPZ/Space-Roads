@@ -60,4 +60,8 @@ public class PlayerController : MonoBehaviour
         if(transform.position.x > boundX + offsetBoundX || transform.position.x < - boundX - offsetBoundX)
             transform.position = new Vector2( - Mathf.Sign(transform.position.x)  * boundX, transform.position.y);
     }
+
+
+    public void ModifySpeed(float multiplier) => speed*=multiplier;
+    
 }
