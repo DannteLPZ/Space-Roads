@@ -19,13 +19,11 @@ public class UIMapPlayerIcon : MonoBehaviour
         Vector2 direction = (point - (Vector2)_playerIcon.transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90.0f;
         _playerIcon.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, angle);
-        _playerIcon.transform.GetChild(0).gameObject.SetActive(true);
         while (Vector2.Distance(_playerIcon.transform.position, point) >= 0.01)
         {
             _playerIcon.transform.Translate(_iconSpeed * Time.deltaTime * Vector2.up);
             yield return null;
         }
-        _playerIcon.transform.GetChild(0).gameObject.SetActive(false);
         _playerIcon.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0);
     }
 }
