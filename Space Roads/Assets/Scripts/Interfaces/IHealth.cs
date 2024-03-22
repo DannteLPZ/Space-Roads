@@ -1,12 +1,14 @@
 
 public interface IHealth
 {
-    int maxHealth { get; set; }
+    public int MaxHealth { get;}
 
-    int currentHealth { get; set; }
+    public int CurrentHealth { get;}
 
-    public void RestoreHealth();
+    public void RestoreHealth(int heal);
 
-    public void GetDamage();
+    public void TakeDamage(int damage);
+
+    public void Die();
 
 }
