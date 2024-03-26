@@ -17,7 +17,7 @@ public class EnemyBehaviour : MonoBehaviour
         yield return new WaitForSeconds(randomAttackTime);
 
         //Iniciar sonido de ataque.
-
+        AudioManager.Instance.Play("SFX_EnemyShot");
         Instantiate(enemyType.laserPrefab, transform.position, transform.rotation);
 
         StartCoroutine(EnemyAttack());

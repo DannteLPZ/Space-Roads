@@ -69,5 +69,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a8188d227d512f2448e407487d7d0508, type: 3}
     volume: 0.5
     pitch: 1
-    loop: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SFX_EnemyShot
+    clip: {fileID: 8300000, guid: 7ccea546a8cfd2349a8fd0ecf7c6cd9f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
