@@ -673,6 +673,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[SPACE EVENT MANAGER]'
       objectReference: {fileID: 0}
+    - target: {fileID: 6544307514469787280, guid: 7c01fc1b3821f56479341a8a0135aec6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6544307514469787281, guid: 7c01fc1b3821f56479341a8a0135aec6, type: 3}
       propertyPath: eventImage
       value: 

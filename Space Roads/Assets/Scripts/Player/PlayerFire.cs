@@ -31,6 +31,7 @@ public class PlayerFire : MonoBehaviour
 
     private void Fire()
     {
+        AudioManager.Instance.Play("SFX_PlayerShot");
         for (int i = 0; i < _maxProjectiles; i++)
         {
             if(projectileCount == 1)

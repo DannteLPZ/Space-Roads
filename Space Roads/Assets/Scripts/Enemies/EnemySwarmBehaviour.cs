@@ -74,7 +74,7 @@ public class EnemySwarmBehaviour : MonoBehaviour
 
                 if((row % 2 == 0 && col % 2 == 0) || (row % 2 != 0 && col % 2 != 0))
                 {
-                    int randomEnemyType = UnityEngine.Random.Range(0, levelDifficulty);
+                    int randomEnemyType = Random.Range(0, levelDifficulty);
                     GameObject enemy = Instantiate(enemyList[randomEnemyType], transform);
 
                     enemyCount++;
