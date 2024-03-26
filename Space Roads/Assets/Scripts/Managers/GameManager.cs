@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Scene Loading")]
+    [SerializeField] private Animator _loadingScreenAnimator;
+
     [Header("Eventos")]
     [SerializeField] private GameEvent _onScoreUpdated;
     [SerializeField] private GameEvent _onLevelIncreased;
@@ -39,10 +44,26 @@ public class GameManager : MonoBehaviour
         _onLevelIncreased.Invoke();
     }
 
-    public void LoadGameScene(int buildIndex)
+    public async void LoadGameScene(int buildIndex)
     {
         _currentLevel = 0;
-        SceneManager.LoadScene(buildIndex);
+        _score = 0;
+        _loadingScreenAnimator.SetBool("Show", true);
+        Slider progressSlider = _loadingScreenAnimator.GetComponentInChildren<Slider>();
+        progressSlider.value = 0.0f;
+
+        await Task.Delay(1000);
+        AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(buildIndex);
+        loadingOperation.allowSceneActivation = false;
+
+        do
+        {
+            await Task.Delay(100);
+            progressSlider.value = loadingOperation.progress;
+        }while (loadingOperation.progress < 0.9f);
+
+        loadingOperation.allowSceneActivation = true;
+        _loadingScreenAnimator.SetBool("Show", false);
     }
 
     public void AddScore(int score)
