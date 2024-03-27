@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class EnemySwarmBehaviour : MonoBehaviour
 {
@@ -59,8 +60,10 @@ public class EnemySwarmBehaviour : MonoBehaviour
 
     }
 
-    public void GenerateSwarm()
+    public void GenerateSwarm(int columnsNumber, int rowsNumber)
     {
+        columns = columnsNumber; rows = rowsNumber;
+
         int levelDifficulty = GameManager.Instance.CurrentLevel + 1;
 
         enemyCount = 0;
@@ -100,6 +103,35 @@ public class EnemySwarmBehaviour : MonoBehaviour
         InitializeMovement(levelDifficulty);
     }
 
+    public void GenerateBoss() //Instantiate boss and start boss movement
+    {
+        enemyCount = 0;
+        tileSize = enemyList[enemyList.Count - 1].transform.localScale.x;
+        rows = 1;
+        columns = 1;
+
+        GameObject enemy = Instantiate(enemyList[enemyList.Count - 1], transform);
+
+        enemyCount++;
+
+        float posX = columns * tileSize;
+        float posY = rows * -tileSize;
+
+        enemy.transform.localPosition = new Vector2(posX, posY);
+
+        Vector2 screenSize = new(Screen.width, Screen.height);
+
+        limitPoint = Camera.main.ScreenToWorldPoint(screenSize);
+
+        float initialX = tileSize * ((1 - columns) / 2.0f);
+        float initialY = limitPoint.y - tileSize;
+        spawnPoint = new Vector2(initialX, initialY);
+
+        transform.position = spawnPoint;
+
+        InitializeMovement(3); //if levelDifficulty increase in boss create a new case for Boss speed multiplier.
+    }
+
     public void ReduceEnemyCount()
     {
         enemyCount--;
@@ -133,7 +165,7 @@ public class EnemySwarmBehaviour : MonoBehaviour
 
     private IEnumerator StartMovementRoutine(int levelDifficulty)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
         SetSwarmSpeed(levelDifficulty);
     }
 }
