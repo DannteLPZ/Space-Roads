@@ -60,6 +60,13 @@ public class EnemySwarmBehaviour : MonoBehaviour
 
     }
 
+    public void SpawnRandomSwarm()
+    {
+        int randomColumns  = Random.Range(8, 13);
+        int randomRows = Random.Range(2, 4);
+        GenerateSwarm(randomColumns, randomRows);
+    }
+
     public void GenerateSwarm(int columnsNumber, int rowsNumber)
     {
         columns = columnsNumber; rows = rowsNumber;
