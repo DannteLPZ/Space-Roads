@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5410275143138375738}
   - component: {fileID: 1945310355}
   - component: {fileID: -3631422127487194700}
+  - component: {fileID: 1853359283}
   m_Layer: 0
   m_Name: EnemySwarm
   m_TagString: Untagged
@@ -73,6 +74,7 @@ MonoBehaviour:
   - {fileID: 392189497738448581, guid: 1d880bf5ae35578438f8985d1a9f1df8, type: 3}
   - {fileID: 752327220934846021, guid: 7e2cd715657fad94687029309f26e634, type: 3}
   - {fileID: 1165022634296931600, guid: a46e48b7f08d74f47bd9718bc10b2ac6, type: 3}
+  - {fileID: 8414350329375934777, guid: 835a62b75e53f5e4784d8db71a4c1b5a, type: 3}
   difficultyIndex: 1
   rows: 3
   columns: 8
@@ -128,7 +130,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5447454907652957207}
         m_TargetAssemblyTypeName: EnemySwarmBehaviour, Assembly-CSharp
-        m_MethodName: GenerateSwarm
+        m_MethodName: GenerateRandomSwarm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -158,6 +160,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1853359283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5447454907652957201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 3b3436bd2dda8f54393db26339bfd0c2, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5447454907652957207}
+        m_TargetAssemblyTypeName: EnemySwarmBehaviour, Assembly-CSharp
+        m_MethodName: GenerateBoss
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

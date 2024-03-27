@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 566664c3289be6349b0e10cab204985c, type: 3}
-  m_Name: Enemy2
+  m_Name: Boss
   m_EditorClassIdentifier: 
-  LaserPrefab: {fileID: 38874946644833287, guid: 9f7a2743c1941ab4ab70b1c5541ad5ec, type: 3}
-  MinFireRate: 1
-  MaxFireRate: 2
-  Projectiles: 1
-  ProjectileOffset: {x: 0, y: -0.5}
+  LaserPrefab: {fileID: 8460250264926614185, guid: 62ef6a825961f57428b8553923991ecd, type: 3}
+  MinFireRate: 0.5
+  MaxFireRate: 0.75
+  Projectiles: 3
+  ProjectileOffset: {x: 0.1, y: -0.8}

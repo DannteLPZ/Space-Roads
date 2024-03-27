@@ -52,16 +52,10 @@ public class UiCanvasGame : MonoBehaviour
 
 
     public void WinMissionMenu(){
-
-        gamePaused = true;
-        Time.timeScale = 0.0f;
         ShowCanvasGroup(winMissionMenu);
     }
 
     public void WinMenu(){
-        
-        gamePaused = true;
-        Time.timeScale = 0f;
         int finalScore = GameManager.Instance.Score;
         if (finalScore < 250)
             minPoints.enabled = true;
@@ -69,7 +63,7 @@ public class UiCanvasGame : MonoBehaviour
             midPoints.enabled = true;
         if (finalScore >= 750)
             maxPoints.enabled = true;
-
+        finalText.SetText(finalScore.ToString());
         ShowCanvasGroup(winMenu);
     }
 
@@ -84,7 +78,6 @@ public class UiCanvasGame : MonoBehaviour
 
     public void GameOver()
     {
-        Time.timeScale = 0f;
         ShowCanvasGroup(gameOverMenu);
     }
 

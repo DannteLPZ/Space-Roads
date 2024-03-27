@@ -3,9 +3,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Enemy", menuName = "EnemyType")]
 public class EnemyType : ScriptableObject
 {
-    public GameObject laserPrefab;
+    public GameObject LaserPrefab;
 
-    public int minFireRate;
+    public float MinFireRate;
 
-    public int maxFireRate;
+    public float MaxFireRate;
+
+    public float Projectiles;
+
+    public Vector2 ProjectileOffset;
 }

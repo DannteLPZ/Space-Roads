@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3400974977438312211}
   - component: {fileID: 6687308333458891177}
   - component: {fileID: 3305216075368897877}
-  - component: {fileID: 1305903210691245326}
   m_Layer: 5
   m_Name: SpaceEventMenu
   m_TagString: Untagged
@@ -91,34 +90,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &1305903210691245326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1501346666134339756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameEvent: {fileID: 11400000, guid: 039cdee85ae775f4cb98e214473736ae, type: 2}
-  _unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7819363971051703870}
-        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
-        m_MethodName: ShowCanvasGroup
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 3305216075368897877}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &3178499566583355316
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,8 +2092,6 @@ GameObject:
   - component: {fileID: 7819363970058835006}
   - component: {fileID: 7819363970058835007}
   - component: {fileID: 2014615557}
-  - component: {fileID: 2014615558}
-  - component: {fileID: 5151624464542782044}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -2203,62 +2172,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &2014615558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7819363970058834977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameEvent: {fileID: 11400000, guid: 745a89f2ea09f604f9afbb03f4ccbbe5, type: 2}
-  _unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7819363971051703870}
-        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
-        m_MethodName: UpdateScoreText
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5151624464542782044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7819363970058834977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameEvent: {fileID: 11400000, guid: 266c51d19c4ce1544a8ae6c3277d203f, type: 2}
-  _unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7819363971051703870}
-        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
-        m_MethodName: UIUpdateHealth
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7819363970248225070
 GameObject:
   m_ObjectHideFlags: 0
@@ -2974,7 +2887,6 @@ GameObject:
   - component: {fileID: 7819363970807425743}
   - component: {fileID: 7819363970807425712}
   - component: {fileID: 1991419226}
-  - component: {fileID: 2014615564}
   m_Layer: 5
   m_Name: GameOverMenu
   m_TagString: Untagged
@@ -3053,34 +2965,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &2014615564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7819363970807425713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameEvent: {fileID: 11400000, guid: 04a9e23d639c2b445827360963a78af8, type: 2}
-  _unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7819363971051703870}
-        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
-        m_MethodName: ShowCanvasGroup
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1991419226}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7819363970815595232
 GameObject:
   m_ObjectHideFlags: 0
@@ -3818,6 +3702,12 @@ GameObject:
   - component: {fileID: 7819363971051703870}
   - component: {fileID: 2014615559}
   - component: {fileID: 2014615560}
+  - component: {fileID: 7129697109192208801}
+  - component: {fileID: 213723883984266519}
+  - component: {fileID: 1465573686879597138}
+  - component: {fileID: 7941005683958436052}
+  - component: {fileID: 386128010143621946}
+  - component: {fileID: 7853848057211171209}
   m_Layer: 5
   m_Name: --- IN GAME UI ---
   m_TagString: Untagged
@@ -3962,6 +3852,174 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70fa573711518944db9891f40439f3b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7129697109192208801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819363971051703871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 1327877448c27cc4a86b44aa2389dc00, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7819363971051703870}
+        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
+        m_MethodName: ShowCanvasGroup
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1991419225}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &213723883984266519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819363971051703871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 1e9616b243c3ab84ca03452fc56c4b45, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7819363971051703870}
+        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
+        m_MethodName: WinMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1465573686879597138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819363971051703871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 04a9e23d639c2b445827360963a78af8, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7819363971051703870}
+        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
+        m_MethodName: ShowCanvasGroup
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1991419226}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7941005683958436052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819363971051703871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 039cdee85ae775f4cb98e214473736ae, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7819363971051703870}
+        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
+        m_MethodName: ShowCanvasGroup
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3305216075368897877}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &386128010143621946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819363971051703871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 745a89f2ea09f604f9afbb03f4ccbbe5, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7819363971051703870}
+        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
+        m_MethodName: UpdateScoreText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7853848057211171209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819363971051703871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 266c51d19c4ce1544a8ae6c3277d203f, type: 2}
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7819363971051703870}
+        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
+        m_MethodName: UIUpdateHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7819363971058451748
 GameObject:
   m_ObjectHideFlags: 0
@@ -4219,7 +4277,6 @@ GameObject:
   - component: {fileID: 7819363971103599291}
   - component: {fileID: 7819363971103599292}
   - component: {fileID: 1991419224}
-  - component: {fileID: 2014615562}
   m_Layer: 5
   m_Name: FinalWinMenu
   m_TagString: Untagged
@@ -4298,34 +4355,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &2014615562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7819363971103599294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameEvent: {fileID: 11400000, guid: 1e9616b243c3ab84ca03452fc56c4b45, type: 2}
-  _unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7819363971051703870}
-        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
-        m_MethodName: ShowCanvasGroup
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1991419224}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7819363971361179897
 GameObject:
   m_ObjectHideFlags: 0
@@ -4989,7 +5018,6 @@ GameObject:
   - component: {fileID: 7819363971693469259}
   - component: {fileID: 7819363971693469260}
   - component: {fileID: 1991419225}
-  - component: {fileID: 2014615563}
   m_Layer: 5
   m_Name: WinMissionMenu
   m_TagString: Untagged
@@ -5068,31 +5096,3 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &2014615563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7819363971693469261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6be32101673d14e48b08661910562df2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameEvent: {fileID: 11400000, guid: 1327877448c27cc4a86b44aa2389dc00, type: 2}
-  _unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7819363971051703870}
-        m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
-        m_MethodName: ShowCanvasGroup
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1991419225}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

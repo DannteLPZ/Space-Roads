@@ -5,7 +5,7 @@ using static UnityEngine.Rendering.DebugUI.Table;
 
 public class EnemySwarmBehaviour : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> enemyList = new List<GameObject>();
+    [SerializeField] private List<GameObject> enemyList = new();
 
     [SerializeField] private int difficultyIndex; //Auxiliar variable for testing
     [SerializeField] private int rows;
@@ -24,7 +24,12 @@ public class EnemySwarmBehaviour : MonoBehaviour
     [HideInInspector]
     public int enemyCount;
 
-    private void Start() => speedMultiplier = 0.0f;
+    private void Start()
+    {
+        speedMultiplier = 0.0f;
+        Vector2 screenSize = new(Screen.width, Screen.height);
+        limitPoint = Camera.main.ScreenToWorldPoint(screenSize);
+    }
 
     private void Update()
     {
@@ -60,7 +65,7 @@ public class EnemySwarmBehaviour : MonoBehaviour
 
     }
 
-    public void SpawnRandomSwarm()
+    public void GenerateRandomSwarm()
     {
         int randomColumns  = Random.Range(8, 13);
         int randomRows = Random.Range(2, 4);
@@ -70,12 +75,10 @@ public class EnemySwarmBehaviour : MonoBehaviour
     public void GenerateSwarm(int columnsNumber, int rowsNumber)
     {
         columns = columnsNumber; rows = rowsNumber;
-
+        enemyCount = 0;
         int levelDifficulty = GameManager.Instance.CurrentLevel + 1;
 
-        enemyCount = 0;
-
-        if(columns % 2 == 0) columns--;
+        if (columns % 2 == 0) columns--;
 
         for (int row = 0; row < rows; row++) 
         {
@@ -97,46 +100,29 @@ public class EnemySwarmBehaviour : MonoBehaviour
             }
         }
 
-        Vector2 screenSize = new(Screen.width, Screen.height);
-        
-        limitPoint = Camera.main.ScreenToWorldPoint(screenSize);
-
         float initialX = tileSize * ((1 - columns) / 2.0f); 
         float initialY = limitPoint.y - tileSize;
         spawnPoint = new Vector2(initialX, initialY);
 
         transform.position = spawnPoint;
 
-        InitializeMovement(levelDifficulty);
+        StartCoroutine(InitializeMovement());
     }
 
     public void GenerateBoss() //Instantiate boss and start boss movement
-    {
+    { 
         enemyCount = 0;
-        tileSize = enemyList[enemyList.Count - 1].transform.localScale.x;
+        tileSize = enemyList[^1].transform.localScale.x;
         rows = 1;
         columns = 1;
 
-        GameObject enemy = Instantiate(enemyList[enemyList.Count - 1], transform);
-
+        GameObject enemy = Instantiate(enemyList[^1], transform);
+        enemy.transform.localPosition = Vector3.zero;
         enemyCount++;
 
-        float posX = columns * tileSize;
-        float posY = rows * -tileSize;
+        transform.position = Vector3.zero;
 
-        enemy.transform.localPosition = new Vector2(posX, posY);
-
-        Vector2 screenSize = new(Screen.width, Screen.height);
-
-        limitPoint = Camera.main.ScreenToWorldPoint(screenSize);
-
-        float initialX = tileSize * ((1 - columns) / 2.0f);
-        float initialY = limitPoint.y - tileSize;
-        spawnPoint = new Vector2(initialX, initialY);
-
-        transform.position = spawnPoint;
-
-        InitializeMovement(3); //if levelDifficulty increase in boss create a new case for Boss speed multiplier.
+        StartCoroutine(InitializeMovement());
     }
 
     public void ReduceEnemyCount()
@@ -150,29 +136,15 @@ public class EnemySwarmBehaviour : MonoBehaviour
         }
     }
 
-    private void SetSwarmSpeed(int levelDifficulty)
-    {
-        switch(levelDifficulty)
-        {
-            case 1:
-                speedMultiplier = 1.0f; break;
-
-            case 2:
-                speedMultiplier = 1.5f; break;
-
-            case 3:
-                speedMultiplier = 2.0f; break;
-        }
-    }
-
-    private void InitializeMovement(int levelDifficulty)
-    {
-        StartCoroutine(StartMovementRoutine(levelDifficulty));
-    }
-
-    private IEnumerator StartMovementRoutine(int levelDifficulty)
+    private IEnumerator InitializeMovement()
     {
         yield return new WaitForSeconds(1.0f);
-        SetSwarmSpeed(levelDifficulty);
+        SetSwarmSpeed();
+    }
+    private void SetSwarmSpeed()
+    {
+        int levelDifficulty = GameManager.Instance.CurrentLevel + 1;
+        speedMultiplier = (0.5f * levelDifficulty) + 0.5f;
+        if (levelDifficulty == 4) speedMultiplier *= 3.0f;
     }
 }

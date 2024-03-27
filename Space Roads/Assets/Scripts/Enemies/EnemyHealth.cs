@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour, IHealth
 {
+    [Header("Health")]
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _score;
+    [SerializeField] private Gradient _healthGradient;
+    [SerializeField] private Image _healthImage;
 
     [Header("Game Events")]
     [SerializeField] private GameEvent _onEnemyDestroyed;
@@ -17,6 +21,8 @@ public class EnemyHealth : MonoBehaviour, IHealth
     void Start()
     {
         _currentHealth = _maxHealth;
+        _healthImage.fillAmount = 1.0f;
+        _healthImage.color = _healthGradient.Evaluate(1.0f);
     }
 
     public void Die()
@@ -33,7 +39,9 @@ public class EnemyHealth : MonoBehaviour, IHealth
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
-
+        float ratio = (float)_currentHealth / _maxHealth;
+        _healthImage.fillAmount = ratio;
+        _healthImage.color = _healthGradient.Evaluate(ratio);
         //Efectos y sonido de daño
 
         if (_currentHealth <= 0 ) Die();
