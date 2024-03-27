@@ -55,21 +55,25 @@ PrefabInstance:
       propertyPath: bulletDamage
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 3150512340024269685, guid: 8de8bc793673680428e6c9972f6a7e7d, type: 3}
+      propertyPath: bulletParticles
+      value: 
+      objectReference: {fileID: 4115706451699529263, guid: 7aba93fa1be02d643bba3cca5d8661ec, type: 3}
     - target: {fileID: 3150512340024269686, guid: 8de8bc793673680428e6c9972f6a7e7d, type: 3}
       propertyPath: m_Name
-      value: EnemyBullet - Easy
+      value: EnemyBullet - Hard Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3150512340024269687, guid: 8de8bc793673680428e6c9972f6a7e7d, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3150512340024269687, guid: 8de8bc793673680428e6c9972f6a7e7d, type: 3}
       propertyPath: m_Color.g
-      value: 0.589459
+      value: 0.19916238
       objectReference: {fileID: 0}
     - target: {fileID: 3150512340024269687, guid: 8de8bc793673680428e6c9972f6a7e7d, type: 3}
       propertyPath: m_Color.r
-      value: 0.2235294
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8de8bc793673680428e6c9972f6a7e7d, type: 3}

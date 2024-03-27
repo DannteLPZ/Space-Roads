@@ -84,7 +84,6 @@ public class SpaceEventManager : MonoBehaviour
 
         Invoke(selectedEvent.Method, 0);
         listSpaceEvent.Remove(selectedEvent);
-
     }
 }
 

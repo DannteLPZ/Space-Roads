@@ -102,6 +102,7 @@ MonoBehaviour:
   speed: 8
   bulletRb: {fileID: -6272508309613821701}
   bulletDamage: 10
+  bulletParticles: {fileID: 4579749242185613160, guid: 9feca52a809335c43917592b05abff8f, type: 3}
 --- !u!61 &4607685537378111811
 BoxCollider2D:
   m_ObjectHideFlags: 0
