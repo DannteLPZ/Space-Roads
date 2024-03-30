@@ -2961,7 +2961,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7819363970807425713}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -3823,6 +3823,7 @@ MonoBehaviour:
   winMenu: {fileID: 1991419224}
   scoreText: {fileID: 7819363971678300717}
   finalText: {fileID: 7819363970661329710}
+  gameOverText: {fileID: 7819363971655018853}
   sliderLife: {fileID: 7819363970629593623}
   maxPoints: {fileID: 7819363970764099890}
   midPoints: {fileID: 7819363969984796935}
@@ -3926,11 +3927,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7819363971051703870}
         m_TargetAssemblyTypeName: UiCanvasGame, Assembly-CSharp
-        m_MethodName: ShowCanvasGroup
-        m_Mode: 2
+        m_MethodName: GameOver
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1991419226}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

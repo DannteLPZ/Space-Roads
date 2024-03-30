@@ -47,18 +47,18 @@ public class EnemySwarmBehaviour : MonoBehaviour
             transform.position = new Vector2((limitPoint.x - tileSize * (columns - 0.5f)), transform.position.y);
         }
 
-        if (transform.position.y <= (tileSize * (rows - 0.5f)))
+        if (transform.position.y - (tileSize * (rows - 0.5f)) <= -limitMovementY)
         {
             if (swarmSpeed.y < 0) swarmSpeed.y *= -1.0f;
 
-            transform.position = new Vector2(transform.position.x, (tileSize * (rows - 0.5f)));
+            transform.position = new Vector2(transform.position.x, -limitMovementY + (tileSize * (rows - 0.5f)));
         }
 
-        else if(transform.position.y >= (limitPoint.y - tileSize / 2.0f))
+        else if(transform.position.y >= (limitPoint.y - tileSize / 2.0f) - limitMovementY)
         {
             if (swarmSpeed.y > 0) swarmSpeed.y *= -1.0f;
 
-            transform.position = new Vector2(transform.position.x, (limitPoint.y - tileSize / 2.0f));
+            transform.position = new Vector2(transform.position.x, (limitPoint.y - tileSize / 2.0f) - limitMovementY);
         }
 
         transform.Translate((swarmSpeed * speedMultiplier) * Time.deltaTime);

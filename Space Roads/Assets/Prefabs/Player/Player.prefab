@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  limitY: -1
+  limitY: -2.5
   offsetBoundX: 1
 --- !u!114 &7328362785240008221
 MonoBehaviour:

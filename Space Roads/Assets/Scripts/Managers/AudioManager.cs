@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -10,6 +11,8 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioMixerGroup _musicGroup;
     [SerializeField] private AudioMixerGroup _sfxGroup;
+
+    private Sounds[] playingSounds;
 
     public Sounds[] sounds;
 
@@ -71,4 +74,18 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
 
+    public void StopAllSFX()
+    {
+        playingSounds = sounds.Where(t => t.source.outputAudioMixerGroup == _sfxGroup).Where(p=>p.source.isPlaying).ToArray();
+        if (playingSounds.Length == 0) return;
+        foreach (Sounds sound in playingSounds)
+            sound.source.Stop();
+    }
+
+    public void ResumeAllSFX()
+    {
+        if (playingSounds.Length == 0) return;
+        foreach (Sounds sound in playingSounds)
+            sound.source.Play();
+    }
 }
