@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4925934445192310108}
   - component: {fileID: 4925934445192310105}
+  - component: {fileID: 192789346}
   - component: {fileID: 4925934445192310106}
   - component: {fileID: 4925934445192310107}
   - component: {fileID: -5744686543730751993}
-  - component: {fileID: 192789346}
+  - component: {fileID: 8748393190402498684}
   m_Layer: 0
   m_Name: Level Icon
   m_TagString: Untagged
@@ -49,6 +50,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4925934445192310109}
   m_CullTransparentMesh: 1
+--- !u!95 &192789346
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925934445192310109}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b4888aaff6cb534bba029b4911976af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &4925934445192310106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +169,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8748393190402498684}
+        m_TargetAssemblyTypeName: AudioHelper, Assembly-CSharp
+        m_MethodName: PlayClip
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SFX_UIButton
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-5744686543730751993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,24 +198,15 @@ MonoBehaviour:
   _iconEvent: {fileID: 11400000, guid: 1275fbe4387999b498cfe6879702d91b, type: 2}
   ParentIcon: {fileID: 0}
   Generator: {fileID: 0}
---- !u!95 &192789346
-Animator:
-  serializedVersion: 5
+--- !u!114 &8748393190402498684
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4925934445192310109}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2b4888aaff6cb534bba029b4911976af, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7bc4fe420be89c4cae07d009a42112b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

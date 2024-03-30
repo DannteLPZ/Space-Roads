@@ -22,6 +22,7 @@ public class UIMapPlayerIcon : MonoBehaviour
     private IEnumerator Travel(Vector2 point)
     {
         _isMoving = true;
+        AudioManager.Instance.Play("SFX_Engine");
         Vector2 direction = (point - (Vector2)_playerIcon.transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90.0f;
         _playerIcon.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, angle);
@@ -31,6 +32,7 @@ public class UIMapPlayerIcon : MonoBehaviour
             yield return null;
         }
         _playerIcon.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0);
+        AudioManager.Instance.Stop("SFX_Engine");
         _isMoving = false;
         _onMapTraversed.Invoke();
     }

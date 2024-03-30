@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float limitY;
     [SerializeField] private float offsetBoundX;
 
+    private bool _isEnabled;
+
     private float verticalInput;
     private float horizotalInput;
     private float boundX;
@@ -14,8 +16,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 boundsY;
     private Vector2 screenSize;
     private Vector2 limitPoint;
-
-    private Vector2 initialPos;
 
     private void Start()
     {
@@ -25,11 +25,12 @@ public class PlayerController : MonoBehaviour
         boundX = limitPoint.x;
         boundsY = new Vector2(limitY, -limitPoint.y);
 
-        initialPos = transform.position;
+        _isEnabled = false;
     }
 
     void Update()
     {
+        if (_isEnabled == false) return;
         Boundary();
         MovePlayer();
     }
@@ -60,5 +61,7 @@ public class PlayerController : MonoBehaviour
 
 
     public void ModifySpeed(float multiplier) => speed*=multiplier;
+
+    public void SetEnable(bool enable) => _isEnabled = enable;
     
 }

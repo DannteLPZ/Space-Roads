@@ -20,12 +20,7 @@ public class PlayerHealth : MonoBehaviour, IHealth
         _currentHealth = _maxHealth;
     }
 
-    public void Die()
-    {
-        _onDead.Invoke();
-        Debug.Log("A mimir");
-        //Destroy(gameObject);
-    }
+    public void Die() => _onDead.Invoke();
 
     public void TakeDamage(int damage)
     {

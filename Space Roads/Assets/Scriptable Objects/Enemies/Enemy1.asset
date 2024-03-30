@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566664c3289be6349b0e10cab204985c, type: 3}
   m_Name: Enemy1
   m_EditorClassIdentifier: 
-  laserPrefab: {fileID: 3150512340024269686, guid: 8de8bc793673680428e6c9972f6a7e7d, type: 3}
-  minFireRate: 5
-  maxFireRate: 10
+  LaserPrefab: {fileID: 3150512340024269686, guid: 8de8bc793673680428e6c9972f6a7e7d, type: 3}
+  MinFireRate: 2
+  MaxFireRate: 4
+  Projectiles: 1
+  ProjectileOffset: {x: 0, y: -0.5}

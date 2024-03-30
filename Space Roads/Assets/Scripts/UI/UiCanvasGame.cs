@@ -15,6 +15,7 @@ public class UiCanvasGame : MonoBehaviour
     [Header("Score Texts")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text finalText;
+    [SerializeField] private TMP_Text gameOverText;
 
     [Header("Life Slider")]
     [SerializeField] private Slider sliderLife;
@@ -52,24 +53,18 @@ public class UiCanvasGame : MonoBehaviour
 
 
     public void WinMissionMenu(){
-
-        gamePaused = true;
-        Time.timeScale = 0.0f;
         ShowCanvasGroup(winMissionMenu);
     }
 
     public void WinMenu(){
-        
-        gamePaused = true;
-        Time.timeScale = 0f;
         int finalScore = GameManager.Instance.Score;
-        if (finalScore < 250)
+        if (finalScore < 3000)
             minPoints.enabled = true;
-        if (finalScore >= 250 && finalScore < 750)
+        if (finalScore >= 3000 && finalScore < 5000)
             midPoints.enabled = true;
-        if (finalScore >= 750)
+        if (finalScore >= 5000)
             maxPoints.enabled = true;
-
+        finalText.SetText("Score: " + finalScore.ToString());
         ShowCanvasGroup(winMenu);
     }
 
@@ -84,19 +79,20 @@ public class UiCanvasGame : MonoBehaviour
 
     public void GameOver()
     {
-        Time.timeScale = 0f;
+        gameOverText.SetText("Score: " + GameManager.Instance.Score.ToString());
         ShowCanvasGroup(gameOverMenu);
     }
 
     public void UpdateScoreText()
     {
         scoreText.text = "Score: " + GameManager.Instance.Score;
-        finalText.text = "Score: " + GameManager.Instance.Score + " /1000";
+        finalText.text = "Score: " + GameManager.Instance.Score;
     }
 
     public void Pause()
     {
         gamePaused = true;
+        AudioManager.Instance.StopAllSFX();
         Time.timeScale = 0f;
         ShowCanvasGroup(pauseMenu);
     }
@@ -107,6 +103,7 @@ public class UiCanvasGame : MonoBehaviour
         HideCanvasGroup(optionsMenu);
         gamePaused = false;
         Time.timeScale = 1f;
+        AudioManager.Instance.ResumeAllSFX();
     }
 
     public void ShowCanvasGroup(CanvasGroup canvasGroup)

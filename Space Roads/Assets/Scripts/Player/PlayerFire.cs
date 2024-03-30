@@ -8,8 +8,9 @@ public class PlayerFire : MonoBehaviour
     [SerializeField] private int _maxProjectiles;
     [SerializeField] private Vector2 _projectileOffset;
 
-    private float fireTimer;
+    private bool _isEnabled;
 
+    private float fireTimer;
     private int projectileCount;
     public int ProjectileCount => projectileCount;
 
@@ -17,10 +18,12 @@ public class PlayerFire : MonoBehaviour
     {
         fireTimer = 1.0f / fireRate;
         projectileCount = 1;
+        _isEnabled = false;
     }
 
     private void Update()
     {
+        if (_isEnabled == false) return;
         fireTimer -= Time.deltaTime;
         if(Input.GetMouseButton(0) == true && fireTimer <= 0)
         {
@@ -31,6 +34,7 @@ public class PlayerFire : MonoBehaviour
 
     private void Fire()
     {
+        AudioManager.Instance.Play("SFX_PlayerShot");
         for (int i = 0; i < _maxProjectiles; i++)
         {
             if(projectileCount == 1)
@@ -53,4 +57,5 @@ public class PlayerFire : MonoBehaviour
             projectileCount =count;
     }
 
+    public void SetEnable(bool enable) => _isEnabled = enable;
 }
