@@ -44,26 +44,26 @@ public class GameManager : MonoBehaviour
         _onLevelIncreased.Invoke();
     }
 
-    public async void LoadGameScene(int buildIndex)
+    public void LoadGameScene(int buildIndex)
     {
         _currentLevel = 0;
         _score = 0;
         _loadingScreenAnimator.SetBool("Show", true);
         Slider progressSlider = _loadingScreenAnimator.GetComponentInChildren<Slider>();
         progressSlider.value = 0.0f;
+        StartCoroutine(LoadingBar(progressSlider, buildIndex));
+    }
 
-        await Task.Delay(1000);
-        AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(buildIndex);
-        loadingOperation.allowSceneActivation = false;
-
-        do
+    private IEnumerator LoadingBar(Slider slider, int buildIndex)
+    {
+        yield return new WaitForSeconds(0.5f);
+        slider.value += Random.Range(0.1f, 0.4f);
+        if(slider.value < 0.9f) StartCoroutine(LoadingBar(slider, buildIndex));
+        else
         {
-            await Task.Delay(100);
-            progressSlider.value = loadingOperation.progress;
-        }while (loadingOperation.progress < 0.9f);
-
-        loadingOperation.allowSceneActivation = true;
-        _loadingScreenAnimator.SetBool("Show", false);
+            SceneManager.LoadScene(buildIndex);
+            _loadingScreenAnimator.SetBool("Show", false);
+        }
     }
 
     public void AddScore(int score)
